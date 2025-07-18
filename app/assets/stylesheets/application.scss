@@ -6,6 +6,7 @@ body {
 
 .navbar-brand {
   font-weight: bold;
+  color: #d9f1dc;
 }
 
 .card {
@@ -47,8 +48,8 @@ body {
 }
 
 // Custom colors for conditions
-.bg-excellent { background-color: #28a745 !important; }
-.bg-good { background-color: #007bff !important; }
+.bg-excellent { background-color: #1ece47 !important; }
+.bg-good { background-color: #ff00ea !important; }
 .bg-fair { background-color: #ffc107 !important; }
 .bg-poor { background-color: #dc3545 !important; }
 
