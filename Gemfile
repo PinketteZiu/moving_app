@@ -24,8 +24,8 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 gem "jbuilder"
+gem "devise"
 
-gem 'image_processing', '~> 1.2'  # Pour les images
 gem 'kaminari'  # Pour la pagination
 gem 'prawn'     # Pour générer les PDF d'étiquettes
 gem 'bootstrap', '~> 5.3.1'  # Pour le CSS et les composants Bootstrap
