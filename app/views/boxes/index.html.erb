@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Cartons - <%= @room.name %></h1>
+  <%= link_to "Nouveau Carton", new_room_box_path(@room), class: "btn btn-success" %>
+</div>
+
+<% if @boxes.any? %>
+  <div class="row">
+    <% @boxes.each do |box| %>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Carton #<%= box.number %></h5>
+            <p class="card-text"><%= box.description.truncate(80) %></p>
+
+            <div class="mb-2">
+              <small class="text-muted">
+                <strong>Destination:</strong> <%= box.destination_room %><br>
+                <strong>Objets:</strong> <%= box.items_count %><br>
+                <strong>Valeur:</strong> <%= number_to_currency(box.total_value, unit: "€") %>
+              </small>
+            </div>
+
+            <div class="d-grid gap-2">
+              <%= link_to "Voir", box, class: "btn btn-outline-success" %>
+              <div class="btn-group">
+                <%= link_to "Étiquette", label_box_path(box), class: "btn btn-info btn-sm", target: "_blank" %>
+                <%= link_to "Modifier", edit_box_path(box), class: "btn btn-outline-secondary btn-sm" %>
+                <%= link_to "Supprimer", box, method: :delete,
+                    class: "btn btn-outline-danger btn-sm",
+                    confirm: "Êtes-vous sûr ?",
+                    data: { turbo_method: :delete } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="text-center py-5">
+    <h3 class="text-muted">Aucun carton créé</h3>
+    <p>Commencez par créer votre premier carton !</p>
+    <%= link_to "Créer mon premier carton", new_room_box_path(@room), class: "btn btn-success" %>
+  </div>
+<% end %>

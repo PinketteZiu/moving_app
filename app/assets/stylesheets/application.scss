@@ -1,1 +1,58 @@
 @import "bootstrap";
+
+body {
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.btn-group .btn {
+  border-radius: 0.375rem;
+}
+
+.list-group-item {
+  border-left: none;
+  border-right: none;
+}
+
+.list-group-item:first-child {
+  border-top: none;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.badge {
+  font-size: 0.75em;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Custom colors for conditions
+.bg-excellent { background-color: #28a745 !important; }
+.bg-good { background-color: #007bff !important; }
+.bg-fair { background-color: #ffc107 !important; }
+.bg-poor { background-color: #dc3545 !important; }
+
+// Print styles
+@media print {
+  .navbar, .btn, .alert { display: none !important; }
+}

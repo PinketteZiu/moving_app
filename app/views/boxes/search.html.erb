@@ -1,0 +1,56 @@
+<h1>Recherche de Cartons</h1>
+
+<%= form_with url: search_boxes_path, method: :get, local: true, class: "mb-4" do |form| %>
+  <div class="row g-3">
+    <div class="col-md-3">
+      <%= form.text_field :q, value: @query, class: "form-control", placeholder: "Numéro du carton..." %>
+    </div>
+    <div class="col-md-3">
+      <%= form.collection_select :room_id, @rooms, :id, :name,
+          { prompt: "Toutes les pièces", selected: @room_filter },
+          { class: "form-select" } %>
+    </div>
+    <div class="col-md-4">
+      <%= form.text_field :destination, value: @destination_filter, class: "form-control", placeholder: "Pièce de destination..." %>
+    </div>
+    <div class="col-md-2">
+      <%= form.submit "Rechercher", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @boxes.any? %>
+  <div class="row">
+    <% @boxes.each do |box| %>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Carton #<%= box.number %></h5>
+            <p class="card-text"><%= box.description.truncate(80) %></p>
+
+            <div class="mb-2">
+              <span class="badge bg-secondary"><%= box.items_count %> objets</span>
+              <span class="badge bg-info"><%= number_to_currency(box.total_value, unit: "€") %></span>
+            </div>
+
+            <small class="text-muted">
+              Pièce: <%= box.room.name %><br>
+              Destination: <%= box.destination_room %>
+            </small>
+
+            <div class="mt-2">
+              <%= link_to "Voir", box, class: "btn btn-outline-success btn-sm" %>
+              <%= link_to "Étiquette", label_box_path(box), class: "btn btn-info btn-sm", target: "_blank" %>
+              <%= link_to "Modifier", edit_box_path(box), class: "btn btn-outline-secondary btn-sm" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="text-center py-5">
+    <h3 class="text-muted">Aucun carton trouvé</h3>
+    <p>Essayez de modifier vos critères de recherche.</p>
+  </div>
+<% end %>

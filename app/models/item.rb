@@ -3,9 +3,8 @@ class Item < ApplicationRecord
   belongs_to :box, optional: true
 
   validates :name, presence: true
-  validates :description, presence: true
   validates :value, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :condition, presence: true, inclusion: { in: %w[excellent good fair poor] }
+  validates :condition, inclusion: { in: %w[excellent good fair poor] }
 
   scope :search_by_name, ->(query) { where("name ILIKE ?", "%#{query}%") }
   scope :by_condition, ->(condition) { where(condition: condition) }

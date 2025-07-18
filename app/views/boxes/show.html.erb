@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1>Carton #<%= @box.number %></h1>
+    <p class="text-muted"><%= @box.description %></p>
+    <p><strong>Destination:</strong> <%= @box.destination_room %></p>
+    <p><strong>Pièce actuelle:</strong> <%= @box.room.name %></p>
+  </div>
+
+  <div class="btn-group">
+    <%= link_to "Étiquette", label_box_path(@box), class: "btn btn-info", target: "_blank" %>
+    <%= link_to "Modifier", edit_box_path(@box), class: "btn btn-outline-secondary" %>
+    <%= link_to "Supprimer", @box, method: :delete,
+        class: "btn btn-outline-danger",
+        confirm: "Êtes-vous sûr ?",
+        data: { turbo_method: :delete } %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Statistiques</h5>
+        <div class="row text-center">
+          <div class="col-6">
+            <h4 class="text-primary"><%= @box.items_count %></h4>
+            <small class="text-muted">Objets</small>
+          </div>
+          <div class="col-6">
+            <h4 class="text-success"><%= number_to_currency(@box.total_value, unit: "€") %></h4>
+            <small class="text-muted">Valeur totale</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Contenu du carton</h5>
+
+        <% if @box.items.any? %>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Objet</th>
+                  <th>État</th>
+                  <th>Valeur</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @box.items.each do |item| %>
+                  <tr>
+                    <td>
+                      <h6 class="mb-1"><%= item.name %></h6>
+                      <small class="text-muted"><%= item.description.truncate(50) %></small>
+                    </td>
+                    <td>
+                      <span class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></span>
+                    </td>
+                    <td><%= number_to_currency(item.value, unit: "€") %></td>
+                    <td>
+                      <%= link_to "Modifier", edit_item_path(item), class: "btn btn-outline-primary btn-sm" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% else %>
+          <p class="text-muted">Ce carton est vide.</p>
+          <p>Vous pouvez ajouter des objets en les modifiant depuis la pièce <%= link_to @box.room.name, @box.room, class: "text-decoration-none" %>.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
