@@ -3,7 +3,6 @@ class Room < ApplicationRecord
   has_many :boxes, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
-  validates :description, presence: true
 
   scope :with_counts, -> {
     left_joins(:items, :boxes)

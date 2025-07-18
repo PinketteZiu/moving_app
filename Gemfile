@@ -23,6 +23,7 @@ gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+gem "jbuilder"
 
 gem 'image_processing', '~> 1.2'  # Pour les images
 gem 'kaminari'  # Pour la pagination
@@ -30,7 +31,7 @@ gem 'prawn'     # Pour générer les PDF d'étiquettes
 gem 'bootstrap', '~> 5.3.1'  # Pour le CSS et les composants Bootstrap
 gem "sassc-rails" # Pour le préprocesseur Sass
 # Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+gem "redis", ">= 4.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -42,10 +43,12 @@ gem "sassc-rails" # Pour le préprocesseur Sass
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem "bootsnap", ">= 1.4.4", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
+
+gem "jbuilder"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

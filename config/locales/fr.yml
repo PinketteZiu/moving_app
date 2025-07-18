@@ -1,0 +1,7 @@
+fr:
+  hello: "Bonjour"
+  rooms:
+    new: "Nouvelle pièce"
+    edit: "Modifier la pièce"
+    show: "Afficher la pièce"
+    index: "Liste des pièces"
