@@ -1,0 +1,27 @@
+<%= form_with(model: room, local: true, class: "row g-3") do |form| %>
+  <% if room.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(room.errors.count, "erreur") %> :</h4>
+      <ul class="mb-0">
+        <% room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-12">
+    <%= form.label :name, "Nom de la pièce", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "ex: Salon, Chambre, Bureau..." %>
+  </div>
+
+  <div class="col-12">
+    <%= form.label :description, "Description", class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 3, placeholder: "Description de la pièce..." %>
+  </div>
+
+  <div class="col-12">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Annuler", room_path(room), class: "btn btn-secondary" rescue link_to("Annuler", rooms_path, class: "btn btn-secondary") %>
+  </div>
+<% end %>

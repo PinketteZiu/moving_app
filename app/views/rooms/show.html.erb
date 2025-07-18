@@ -1,2 +1,92 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1><%= @room.name %></h1>
+    <p class="text-muted"><%= @room.description %></p>
+  </div>
+
+  <div class="btn-group">
+    <%= link_to "Modifier", edit_room_path(@room), class: "btn btn-outline-secondary" %>
+    <%= link_to "Supprimer", @room, method: :delete,
+        class: "btn btn-outline-danger",
+        confirm: "Êtes-vous sûr ?",
+        data: { turbo_method: :delete } %>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-title">Objets (<%= @items.count %>)</h5>
+          <%= link_to "Ajouter un objet", new_room_item_path(@room), class: "btn btn-primary btn-sm" %>
+        </div>
+
+        <% if @items.any? %>
+          <div class="list-group list-group-flush">
+            <% @items.limit(5).each do |item| %>
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <h6 class="mb-1"><%= item.name %></h6>
+                  <small class="text-muted"><%= item.description.truncate(50) %></small>
+                  <% if item.box %>
+                    <br><small class="text-info">Carton: <%= item.box.number %></small>
+                  <% end %>
+                </div>
+                <div class="text-end">
+                  <span class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></span>
+                  <br><small class="text-muted"><%= number_to_currency(item.value, unit: "€") %></small>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <% if @items.count > 5 %>
+            <div class="card-footer">
+              <%= link_to "Voir tous les objets", room_items_path(@room), class: "btn btn-outline-primary btn-sm" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-muted">Aucun objet dans cette pièce.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-title">Cartons (<%= @boxes.count %>)</h5>
+          <%= link_to "Ajouter un carton", new_room_box_path(@room), class: "btn btn-success btn-sm" %>
+        </div>
+
+        <% if @boxes.any? %>
+          <div class="list-group list-group-flush">
+            <% @boxes.limit(5).each do |box| %>
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <h6 class="mb-1">Carton #<%= box.number %></h6>
+                  <small class="text-muted"><%= box.description.truncate(50) %></small>
+                  <br><small class="text-info">→ <%= box.destination_room %></small>
+                </div>
+                <div class="text-end">
+                  <span class="badge bg-secondary"><%= box.items_count %> objets</span>
+                  <br><small class="text-muted"><%= number_to_currency(box.total_value, unit: "€") %></small>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <% if @boxes.count > 5 %>
+            <div class="card-footer">
+              <%= link_to "Voir tous les cartons", room_boxes_path(@room), class: "btn btn-outline-success btn-sm" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-muted">Aucun carton dans cette pièce.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

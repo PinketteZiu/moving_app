@@ -1,0 +1,50 @@
+<h1>Recherche d'Objets</h1>
+
+<%= form_with url: search_items_path, method: :get, local: true, class: "mb-4" do |form| %>
+  <div class="row g-3">
+    <div class="col-md-3">
+      <%= form.text_field :q, value: @query, class: "form-control", placeholder: "Nom de l'objet..." %>
+    </div>
+    <div class="col-md-2">
+      <%= form.collection_select :room_id, @rooms, :id, :name,
+          { prompt: "Toutes les pièces", selected: @room_filter },
+          { class: "form-select" } %>
+    </div>
+    <div class="col-md-2">
+      <%= form.select :condition,
+          options_for_select([
+            ['Excellent', 'excellent'],
+            ['Bon', 'good'],
+            ['Acceptable', 'fair'],
+            ['Mauvais', 'poor']
+          ], @condition_filter),
+          { prompt: "Tous les états" },
+          { class: "form-select" } %>
+    </div>
+    <div class="col-md-2">
+      <%= form.collection_select :box_id, @boxes, :id, :number,
+          { prompt: "Tous les cartons", selected: @box_filter },
+          { class: "form-select" } %>
+    </div>
+    <div class="col-md-2">
+      <%= form.check_box :unboxed, { checked: params[:unboxed] == '1' }, '1', '' %>
+      <%= form.label :unboxed, "Sans carton", class: "form-check-label" %>
+    </div>
+    <div class="col-md-1">
+      <%= form.submit "Rechercher", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @items.any? %>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.description.truncate(80) %></p>
+
+            <div class="mb-2">
+              <span class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></span>
+              <span class

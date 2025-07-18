@@ -1,2 +1,47 @@
-<h1>Rooms#index</h1>
-<p>Find me in app/views/rooms/index.html.erb</p>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Mes Pièces</h1>
+  <%= link_to "Nouvelle Pièce", new_room_path, class: "btn btn-primary" %>
+</div>
+
+<div class="row">
+  <% @rooms.each do |room| %>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= room.name %></h5>
+          <p class="card-text"><%= room.description %></p>
+
+          <div class="row text-center mb-3">
+            <div class="col-6">
+              <div class="border-end">
+                <h6 class="text-primary mb-1"><%= room.items_count %></h6>
+                <small class="text-muted">Objets</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <h6 class="text-success mb-1"><%= room.boxes_count %></h6>
+              <small class="text-muted">Cartons</small>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <%= link_to "Voir", room, class: "btn btn-outline-primary" %>
+            <%= link_to "Modifier", edit_room_path(room), class: "btn btn-outline-secondary btn-sm" %>
+            <%= link_to "Supprimer", room, method: :delete,
+                class: "btn btn-outline-danger btn-sm",
+                confirm: "Êtes-vous sûr ?",
+                data: { turbo_method: :delete } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if @rooms.empty? %>
+  <div class="text-center py-5">
+    <h3 class="text-muted">Aucune pièce créée</h3>
+    <p>Commencez par créer votre première pièce !</p>
+    <%= link_to "Créer ma première pièce", new_room_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
