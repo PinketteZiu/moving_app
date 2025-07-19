@@ -77,9 +77,9 @@
       </div>
 
       <%# <div class="stats"> %>
-        <span><%= @box.items_count %> objets</span>
-        <%# <span><%= number_to_currency(@box.total_value, unit: "€") %></span> 
-        <span><%= Date.current.strftime("%d/%m/%Y") %></span>
+        <p><%= @box.items_count %> objets</p>
+        <%# <p><%= number_to_currency(@box.total_value, unit: "€") %></p>
+        <p><%= Date.current.strftime("%d/%m/%Y") %></p>
       </div>
     </div>
 

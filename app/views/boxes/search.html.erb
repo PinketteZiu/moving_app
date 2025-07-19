@@ -29,8 +29,8 @@
             <p class="card-text"><%= box.description.truncate(80) %></p>
 
             <div class="mb-2">
-              <span class="badge bg-secondary"><%= box.items_count %> objets</span>
-              <span class="badge bg-info"><%= number_to_currency(box.total_value, unit: "€") %></span>
+              <p class="badge bg-secondary"><%= box.items_count %> objets</p>
+              <p class="badge bg-info"><%= number_to_currency(box.total_value, unit: "€") %></p>
             </div>
 
             <small class="text-muted">

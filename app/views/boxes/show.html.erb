@@ -59,7 +59,7 @@
                       <small class="text-muted"><%= item.description.truncate(50) %></small>
                     </td>
                     <td>
-                      <span class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></span>
+                      <p class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></p>
                     </td>
                     <td><%= number_to_currency(item.value, unit: "€") %></td>
                     <td>

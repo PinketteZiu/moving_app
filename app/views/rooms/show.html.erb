@@ -19,7 +19,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="card-title">Objets (<%= @items.count %>)</h5>
-          <%= link_to "Ajouter un objet", new_room_item_path(@room), class: "btn btn-primary btn-sm" %>
+          <%= link_to "Ajouter un objet", new_room_item_path(@room), class: "btn btn-outline-warning btn-sm" %>
         </div>
 
         <% if @items.any? %>
@@ -34,7 +34,7 @@
                   <% end %>
                 </div>
                 <div class="text-end">
-                  <span class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></span>
+                  <p class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></p>
                   <br><small class="text-muted"><%= number_to_currency(item.value, unit: "€") %></small>
                 </div>
               </div>
@@ -58,7 +58,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="card-title">Cartons (<%= @boxes.count %>)</h5>
-          <%= link_to "Ajouter un carton", new_room_box_path(@room), class: "btn btn-success btn-sm" %>
+          <%= link_to "Ajouter un carton", new_room_box_path(@room), class: "btn btn-outline-warning btn-sm" %>
         </div>
 
         <% if @boxes.any? %>
@@ -71,7 +71,7 @@
                   <br><small class="text-info">→ <%= box.destination_room %></small>
                 </div>
                 <div class="text-end">
-                  <span class="badge bg-secondary"><%= box.items_count %> objets</span>
+                  <p class="badge bg-secondary"><%= box.items_count %> objets</p>
                   <br><small class="text-muted"><%= number_to_currency(box.total_value, unit: "€") %></small>
                 </div>
               </div>
