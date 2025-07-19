@@ -25,6 +25,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "devise"
+gem "simple_form", github: "heartcombo/simple_form"
 
 gem 'kaminari'  # Pour la pagination
 gem 'prawn'     # Pour générer les PDF d'étiquettes

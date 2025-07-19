@@ -1,0 +1,9 @@
+<p>Salut <%= @email %>!</p>
+
+<% if @resource.try(:unconfirmed_email?) %>
+  <p>Nous vous informons que votre e-mail est en cours de changement vers : <%= @resource.unconfirmed_email %>.</p>
+<% else %>
+  <p>Nous vous informons que votre e-mail de connexion est désormais : <%= @resource.email %>.</p>
+<% end %>
+
+<p><small>Ce message a été envoyé automatiquement, veuillez ne pas y répondre.</small></p>

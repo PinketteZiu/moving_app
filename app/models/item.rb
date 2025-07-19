@@ -15,9 +15,9 @@ class Item < ApplicationRecord
   def condition_badge_class
     case condition
     when 'excellent' then 'bg-success'
-    when 'good' then 'bg-primary'
-    when 'fair' then 'bg-warning'
-    when 'poor' then 'bg-danger'
+    when 'good' then 'bg-good'
+    when 'fair' then 'bg-fair'
+    when 'poor' then 'bg-poor'
     end
   end
 

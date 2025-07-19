@@ -1,12 +1,36 @@
 @import "bootstrap";
+@import "components/_form.scss";
 
 body {
   background-color: #f8f9fa;
 }
 
+.avatar {
+  width: 56px;
+  border-radius: 50%;
+
+  &:hover {
+    transform: scale(1.3);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
 .navbar-brand {
   font-weight: bold;
   color: #d9f1dc;
+}
+
+.navbar-lewagon {
+  justify-content: space-between;
+  background: #d9f1dc;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
 }
 
 .card {
@@ -48,8 +72,8 @@ body {
 }
 
 // Custom colors for conditions
-.bg-excellent { background-color: #1ece47 !important; }
-.bg-good { background-color: #ff00ea !important; }
+.bg-excellent { background-color: #15d342 !important; }
+.bg-good { background-color: #e30ed2ef !important; }
 .bg-fair { background-color: #ffc107 !important; }
 .bg-poor { background-color: #dc3545 !important; }
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   root "rooms#index"
 
   resources :rooms do
@@ -20,4 +22,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
+  resources :users, only: [] do
+    member do
+      get 'my_account'
+    end
+  end
+
 end

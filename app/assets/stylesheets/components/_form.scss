@@ -1,0 +1,70 @@
+.form-container {
+  background-color: #E9E8C6;
+  border-radius: 25px;
+  margin: 20px auto;
+  padding: 0 20px 10px;
+  max-width: 600px;
+  max-height: 485px;
+
+  .form-scale {
+    scale: 0.8;
+  }
+  .form-scale-log-in {
+    scale: 0.9;
+  }
+
+  #user_email, #user_password, #user_password_confirmation, #user_last_name, #user_first_name,
+   #brain_name, #brain_price, #brain_address, #brain_competence, #brain_image,
+   #booking_start_date, #booking_end_date{
+
+    &:focus {
+      box-shadow:  0 0 0.25rem #d9f1dc!important;
+      border-color: #d9f1dc;
+    }
+
+  }
+
+  .log-in {
+    background-color: #15d342!important;
+    border-color: #15d342!important;
+      &:hover {
+        background-color: #15d342!important;
+      }
+  }
+
+  .cancel-class {
+    display: flex;
+    align-items: center;
+
+    button {
+    color: #ffc107!important;
+    border-color: #ffc107!important;
+    scale: 0.8;
+      &:hover {
+        background-color: #ffc107!important;
+        color: white!important;
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
+.link-style {
+  text-decoration: none;
+  color: #e18e9f;
+  margin-top: 20px;
+
+  &:hover {
+    color: #d36279;
+  }
+}
+
+h1, h2 {
+  margin-top: 10px;
+  text-align: center;
+}

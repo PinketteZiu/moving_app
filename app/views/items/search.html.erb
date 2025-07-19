@@ -46,7 +46,7 @@
             <p class="card-text"><%= item.description.truncate(80) %></p>
 
             <div class="mb-2">
-              <p class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></p>
+              <p class="badge <%= item.condition_badge_class %> "><%= item.condition_text %></p>
               <p class="badge bg-info"><%= number_to_currency(item.value, unit: "€") %></p>
             </div>
 
