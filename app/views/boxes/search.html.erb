@@ -16,10 +16,12 @@
     <div class="col-md-2">
       <%= form.submit "Rechercher", class: "btn btn-primary" %>
     </div>
+
   </div>
 <% end %>
 
 <% if @boxes.any? %>
+
   <div class="row">
     <% @boxes.each do |box| %>
       <div class="col-md-6 col-lg-4 mb-3">

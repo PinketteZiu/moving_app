@@ -20,6 +20,14 @@
     <%= form.text_field :destination_room, class: "form-control", placeholder: "ex: Salon, Chambre..." %>
   </div>
 
+
+  <div class="col-md-6">
+    <div class="form-check mt-4">
+      <%= form.check_box :fragile, class: "form-check-input", id: "box_fragile" %>
+      <%= form.label :fragile, "Fragile", class: "form-check-label", for: "box_fragile" %>
+    </div>
+  </div>
+
   <div class="col-12">
     <%= form.label :description, "Description du contenu", class: "form-label" %>
     <%= form.text_area :description, class: "form-control", rows: 3, placeholder: "Description du contenu du carton..." %>

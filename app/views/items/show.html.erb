@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1>Meubles et objets #<%= @item.number %></h1>
+    <p class="text-muted"><%= @item.description %></p>
+    <p><strong>Destination:</strong> <%= @item.destination_room %></p>
+    <p><strong>Pièce actuelle:</strong> <%= @item.room.name %></p>
+  </div>
+
+  <div class="btn-group">
+      <%= link_to "Modifier", edit_item_path(@item), class: "btn btn-outline-secondary" %>
+    <%= link_to "Supprimer", @item, method: :delete,
+        class: "btn btn-outline-danger",
+        confirm: "Êtes-vous sûr ?",
+        data: { turbo_method: :delete } %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Statistiques</h5>
+        <div class="row text-center">
+          <div class="col-6">
+            <h4 class="text-primary"><%= @item.items_count %></h4>
+            <small class="text-muted">Objets</small>
+          </div>
+          <div class="col-6">
+            <h4 class="text-success"><%= number_to_currency(@item.total_value, unit: "€") %></h4>
+            <small class="text-muted">Valeur totale</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Photo</h5>
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Objet</th>
+                  <th>État</th>
+                  <th>Valeur</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @item.items.each do |item| %>
+                  <tr>
+                    <td>
+                      <h6 class="mb-1"><%= item.name %></h6>
+                      <small class="text-muted"><%= item.description.truncate(50) %></small>
+                    </td>
+                    <td>
+                      <p class="badge <%= item.condition_badge_class %>"><%= item.condition_text %></p>
+                    </td>
+                    <td><%= number_to_currency(item.value, unit: "€") %></td>
+                    <td>
+                      <%= link_to "Modifier", edit_item_path(item), class: "btn btn-outline-primary btn-sm" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to "retour", :back %>
