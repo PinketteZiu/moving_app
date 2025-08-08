@@ -30,6 +30,7 @@ gem "simple_form"
 gem 'kaminari'  # Pour la pagination
 gem 'prawn'     # Pour générer les PDF d'étiquettes
 gem 'bootstrap', '~> 5.3.1'  # Pour le CSS et les composants Bootstrap
+gem 'jquery-rails' # Pour jQuery, nécessaire pour certains composants Bootstrap
 gem "sassc-rails" # Pour le préprocesseur Sass
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
