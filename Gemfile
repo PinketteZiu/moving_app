@@ -25,7 +25,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "devise"
-gem "simple_form", github: "heartcombo/simple_form"
+gem "simple_form"
 
 gem 'kaminari'  # Pour la pagination
 gem 'prawn'     # Pour générer les PDF d'étiquettes
@@ -65,4 +65,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "hotwire-livereload"
 end
